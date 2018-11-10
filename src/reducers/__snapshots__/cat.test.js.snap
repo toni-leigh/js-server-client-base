@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GET_CAT 1`] = `
+Object {
+  "imageSrc": "foo",
+}
+`;
+
+exports[`cat reducer without state uses default 1`] = `
+Object {
+  "imageSrc": "",
+}
+`;
