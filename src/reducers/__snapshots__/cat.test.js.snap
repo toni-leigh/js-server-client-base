@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GET_CAT 1`] = `
+exports[`RECEIVE_CAT 1`] = `
 Object {
-  "imageSrc": "https://placekitten.com/200/300",
+  "imageSrc": "bar",
 }
 `;
 

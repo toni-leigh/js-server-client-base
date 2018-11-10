@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`get cat returns the correct action 1`] = `
-Object {
-  "type": "GET_CAT",
-}
-`;

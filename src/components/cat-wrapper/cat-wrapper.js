@@ -19,16 +19,8 @@ CatWrapper.propTypes = {
   imageSrc: PropTypes.string
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getCat: () => { dispatch(getCat()) }
-  };
-};
-
-const mapStateToProps = (state, props) => {
-  return {
-    imageSrc: state.cat.imageSrc
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CatWrapper);
+export default connect((state) => ({
+  imageSrc: state.cat.imageSrc
+}), {
+  getCat
+})(CatWrapper);
