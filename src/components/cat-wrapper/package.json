@@ -1,0 +1,4 @@
+{
+  "main": "./cat-wrapper.js",
+  "style": "./cat-wrapper.scss"
+}

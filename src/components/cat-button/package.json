@@ -1,0 +1,4 @@
+{
+  "main": "./cat-button.js",
+  "style": "./cat-button.scss"
+}

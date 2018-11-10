@@ -1,0 +1,4 @@
+{
+  "main": "./cat-image.js",
+  "style": "./cat-image.scss"
+}

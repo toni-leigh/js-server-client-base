@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CatImage /> basic render 1`] = `
+<div
+  className="crardx-cat-image"
+>
+  Test
+</div>
+`;
