@@ -1,3 +1,11 @@
+# get-cat
+Get cats at the click of a button
+
+Get Cat is a start point for creating a React App with Enzyme, Redux and Thunk all set up.
+An example that gets a cat is provided.
+
+========
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
