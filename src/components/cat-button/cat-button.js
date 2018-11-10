@@ -2,11 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const CatButton = props => (
-  <div className='crardx-cat-button'>
-    Test
-  </div>
+  <button
+    className='crardx-cat-button'
+    onClick={ props.getCat }
+  >
+    Get cat!
+  </button>
 );
 
-CatButton.propTypes = {};
+CatButton.propTypes = {
+  getCat: PropTypes.func
+};
 
 export default CatButton;

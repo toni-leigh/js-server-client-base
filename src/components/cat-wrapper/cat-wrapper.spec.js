@@ -2,8 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { createStore } from 'redux';
 import CatWrapper from './cat-wrapper';
+import rootReducer from '../../reducers/reducers';
 
-const store = createStore(() => {});
+const store = createStore(rootReducer);
 
 describe('<CatWrapper />', () => {
   let catWrapper;

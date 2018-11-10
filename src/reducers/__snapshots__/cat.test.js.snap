@@ -2,7 +2,7 @@
 
 exports[`GET_CAT 1`] = `
 Object {
-  "imageSrc": "foo",
+  "imageSrc": "https://placekitten.com/200/300",
 }
 `;
 

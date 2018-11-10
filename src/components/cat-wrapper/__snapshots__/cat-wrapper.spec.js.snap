@@ -4,6 +4,11 @@ exports[`<CatWrapper /> basic render 1`] = `
 <div
   className="crardx-cat-wrapper"
 >
-  Test
+  <CatImage
+    imageSrc=""
+  />
+  <CatButton
+    getCat={[Function]}
+  />
 </div>
 `;

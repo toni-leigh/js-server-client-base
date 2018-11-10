@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CatButton /> basic render 1`] = `
-<div
+<button
   className="crardx-cat-button"
 >
-  Test
-</div>
+  Get cat!
+</button>
 `;

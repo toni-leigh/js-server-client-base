@@ -2,20 +2,33 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import CatButton from '../cat-button';
+import CatImage from '../cat-image';
+
+import { getCat } from '../../actions/get-cat';
+
 const CatWrapper = props => (
   <div className='crardx-cat-wrapper'>
-    Test
+    <CatImage imageSrc={ props.imageSrc } />
+    <CatButton getCat={ props.getCat } />
   </div>
 );
 
-CatWrapper.propTypes = {};
+CatWrapper.propTypes = {
+  getCat: PropTypes.func,
+  imageSrc: PropTypes.string
+};
 
 const mapDispatchToProps = dispatch => {
-  return { };
+  return {
+    getCat: () => { dispatch(getCat()) }
+  };
 };
 
 const mapStateToProps = (state, props) => {
-  return { };
+  return {
+    imageSrc: state.cat.imageSrc
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CatWrapper);

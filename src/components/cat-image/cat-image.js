@@ -2,11 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const CatImage = props => (
-  <div className='crardx-cat-image'>
-    Test
-  </div>
+  <img
+    alt='Cute kitten'
+    className='crardx-cat-image'
+    src={ props.imageSrc }
+  />
 );
 
-CatImage.propTypes = {};
+CatImage.propTypes = {
+  imageSrc: PropTypes.string
+};
 
 export default CatImage;
