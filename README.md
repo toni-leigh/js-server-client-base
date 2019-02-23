@@ -1,8 +1,6 @@
-# get-cat
-Get cats at the click of a button
+# Server Client Base
 
-Get Cat is a start point for creating a React App with Enzyme, Redux and Thunk all set up.
-An example that gets a cat is provided.
+* Set up with React Create App, Express, Redux, Immutable, SQL DB and Redis.
 
 ========
 
