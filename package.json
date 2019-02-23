@@ -11,7 +11,9 @@
     "react-redux": "^5.1.0",
     "react-scripts": "^2.1.5",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-immutable": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "with-immutable-props-to-js": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

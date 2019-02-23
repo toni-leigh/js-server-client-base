@@ -1,14 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CatWrapper /> basic render 1`] = `
+exports[`<CatWrapper /> basic dumb component render 1`] = `
 <div
   className="crardx-cat-wrapper"
 >
   <CatImage
-    imageSrc=""
+    imageSrc="http://test.jpg"
   />
   <CatButton
-    getCat={[Function]}
+    getCat={[MockFunction]}
   />
 </div>
+`;
+
+exports[`<CatWrapperConnected /> render occurs through connection 1`] = `
+<withImmutablePropsToJS(CatWrapper)
+  getCat={[Function]}
+  imageSrc=""
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+  storeSubscription={
+    Subscription {
+      "listeners": Object {
+        "clear": [Function],
+        "get": [Function],
+        "notify": [Function],
+        "subscribe": [Function],
+      },
+      "onStateChange": [Function],
+      "parentSub": undefined,
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "unsubscribe": [Function],
+    }
+  }
+/>
 `;

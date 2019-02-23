@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RECEIVE_CAT 1`] = `
-Object {
+Immutable.Map {
   "imageSrc": "bar",
 }
 `;
 
 exports[`cat reducer without state uses default 1`] = `
-Object {
+Immutable.Map {
   "imageSrc": "",
 }
 `;

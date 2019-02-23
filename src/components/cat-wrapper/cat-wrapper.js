@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import immutableToJS from 'with-immutable-props-to-js';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -7,10 +8,10 @@ import CatImage from '../cat-image';
 
 import { getCat } from '../../actions/get-cat';
 
-const CatWrapper = props => (
+export const CatWrapper = ({ getCat, imageSrc }) => (
   <div className='crardx-cat-wrapper'>
-    <CatImage imageSrc={ props.imageSrc } />
-    <CatButton getCat={ props.getCat } />
+    <CatImage imageSrc={ imageSrc } />
+    <CatButton getCat={ getCat } />
   </div>
 );
 
@@ -19,8 +20,10 @@ CatWrapper.propTypes = {
   imageSrc: PropTypes.string
 };
 
-export default connect((state) => ({
-  imageSrc: state.cat.imageSrc
-}), {
+export default connect((state) => {
+  return ({
+    imageSrc: state.getIn(['cat', 'imageSrc'])
+  });
+}, {
   getCat
-})(CatWrapper);
+})(immutableToJS(CatWrapper));
