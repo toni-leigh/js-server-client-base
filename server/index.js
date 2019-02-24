@@ -6,7 +6,11 @@ const app = express()
 app.use(express.static('public'))
 app.use(bodyParser.json())
 
-app.get('/hardcoded-text', )
+const getHardcodedText = require('./hardcoded-text/get')
+
+console.log(getHardcodedText)
+
+app.get('/hardcoded-text', getHardcodedText)
 
 // app.post('/createUser', (req, res) => {
 //   store
