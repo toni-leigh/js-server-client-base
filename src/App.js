@@ -4,9 +4,9 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { Provider } from 'react-redux';
 
-import rootReducer from './reducers/reducers';
+import rootReducer from './client/reducers/reducers';
 
-import { CatWrapperConnected } from './components/cat-wrapper';
+import { CatWrapperConnected } from './client/components/cat-wrapper';
 
 const store = createStore(
   rootReducer,
