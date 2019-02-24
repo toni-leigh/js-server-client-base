@@ -48,3 +48,15 @@ exports[`<CatWrapperConnected /> render occurs through connection 1`] = `
   }
 />
 `;
+
+exports[`mapDispatchToProps processes the actions correctly 1`] = `
+Object {
+  "getCat": [Function],
+}
+`;
+
+exports[`mapStateToProps processes the state correctly 1`] = `
+Object {
+  "imageSrc": "http://test.jpg",
+}
+`;

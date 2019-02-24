@@ -8,7 +8,7 @@ import CatImage from '../cat-image';
 
 import { getCat } from '../../actions/get-cat';
 
-export const CatWrapper = ({ getCat, imageSrc }) => (
+const CatWrapper = ({ getCat, imageSrc }) => (
   <div className='crardx-cat-wrapper'>
     <CatImage imageSrc={ imageSrc } />
     <CatButton getCat={ getCat } />
@@ -20,10 +20,21 @@ CatWrapper.propTypes = {
   imageSrc: PropTypes.string
 };
 
-export default connect((state) => {
+const mapDispatchToProps = {
+  getCat
+};
+
+const mapStateToProps = (state) => {
   return ({
     imageSrc: state.getIn(['cat', 'imageSrc'])
   });
-}, {
-  getCat
-})(immutableToJS(CatWrapper));
+}
+
+const CatWrapperConnected = connect(mapStateToProps, mapDispatchToProps)(immutableToJS(CatWrapper));
+
+export {
+  CatWrapper,
+  CatWrapperConnected,
+  mapDispatchToProps,
+  mapStateToProps
+};
