@@ -53,13 +53,21 @@ def react(key, type)
     "#{sass_import}"\
     "#{i18n_import}"\
     "#{i18n_scope_import}"\
-    "export const #{classified} = props => (\n"\
+    "const #{classified} = props => (\n"\
     "  <div className='#{app_prefix}-#{key}'>\n"\
     "    #{classified}\n"\
     "  </div>\n"\
     ");\n\n"\
     "#{classified}.propTypes = {};\n\n"\
-    "export default connect((state) => ({  }), {  })(immutableToJS(#{classified}));"
+    "const mapDispatchToProps = {};\n\n"\
+    "const mapStateToProps = (state) => state;\n\n"\
+    "const #{classified}Connected = connect(mapStateToProps, mapDispatchToProps)(immutableToJS(#{classified}));\n\n"
+    "export {\n";
+    "  #{classified},\n";
+    "  #{classified}Connected,\n";
+    "  mapDispatchToProps,\n";
+    "  mapStateToProps\n";
+    "};\n";
   end
 
   if (type == 'function')
@@ -125,21 +133,14 @@ def spec(key, type)
   if (type == 'hoc')
     return "import React from 'react';\n"\
     "import { shallow } from 'enzyme';\n"\
-    "import #{classified}Connected, { #{classified} } from './#{key}';\n\n"\
+    "import {\n"\
+    "  #{classified},\n";
+    "  #{classified}Connected,\n";
+    "  mapDispatchToProps,\n";
+    "  mapStateToProps\n";
+    "} from './#{key}';\n"\
     "import { createStore } from 'redux';\n\n "\
     "#{i18n_import}"\
-    "const store = createStore(() => {});\n\n "\
-    "describe('<#{classified}Connected />', () => {\n"\
-    "  let #{variablised}Connected;\n\n"\
-    "  beforeAll(() => {\n"\
-    "    #{variablised}Connected = shallow(\n"\
-    "      <#{classified}Connected store={ store } />\n"\
-    "    );\n"\
-    "  });\n\n"\
-    "  test('render occurs through connection', () => {\n"\
-    "    expect(#{variablised}Connected).toMatchSnapshot();\n"\
-    "  });\n"\
-    "});"
 
     "describe('<#{classified} />', () => {\n"\
     "  let #{variablised};\n\n"\
@@ -152,6 +153,32 @@ def spec(key, type)
     "    expect(#{variablised}).toMatchSnapshot();\n"\
     "  });\n"\
     "});"
+
+    "describe('<#{classified}Connected />', () => {\n"\
+    "  let #{variablised}Connected;\n\n"\
+    "  beforeAll(() => {\n"\
+    "    const store = createStore(() => {});\n"\
+    "    #{variablised}Connected = shallow(\n"\
+    "      <#{classified}Connected store={ store } />\n"\
+    "    );\n"\
+    "  });\n\n"\
+    "  test('render occurs through connection', () => {\n"\
+    "    expect(#{variablised}Connected).toMatchSnapshot();\n"\
+    "  });\n"\
+    "});"
+
+    "describe('mapDispatchToProps', () => {\n"\
+    "  test('processes the actions correctly', () => {\n"\
+    "    expect(mapDispatchToProps).toMatchSnapshot();\n"\
+    "  });\n"\
+    "});\n"\
+
+    "describe('mapStateToProps', () => {\n"\
+    "  test('processes the state correctly', () => {\n"\
+    "  const state = fromJS({});\n"\
+    "    expect(mapStateToProps(state)).toMatchSnapshot();\n"\
+    "  });\n"\
+    "});\n"\
   end
 
   return "import React from 'react';\n"\
