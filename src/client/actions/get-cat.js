@@ -1,20 +1,13 @@
-const GET_CAT = 'GET_CAT';
-const RECEIVE_CAT = 'RECEIVE_CAT';
+import { buildGetAction } from './base-api.actions.js';
 
-const getCat = () => dispatch => {
-  return fetch('https://api.thecatapi.com/v1/images/search?size=full')
-    .then(response => response.json())
-    .then(json => dispatch(receiveCat(json)));
-};
+const CAT_RECEIVED = 'CAT_RECEIVED';
 
-const receiveCat = cat => ({
-  type: RECEIVE_CAT,
-  payload: cat
+const getCat = buildGetAction({
+  getUrl: 'https://api.thecatapi.com/v1/images/search?size=full',
+  responseConstant: CAT_RECEIVED
 });
 
 export {
   getCat,
-  GET_CAT,
-  receiveCat,
-  RECEIVE_CAT
+  CAT_RECEIVED
 };

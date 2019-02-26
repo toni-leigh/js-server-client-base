@@ -1,4 +1,4 @@
-import { getCat, CAT_RECEIVED } from './get-cat';
+import { getHardcodedText, HARDCODED_TEXT_RECEIVED } from './get-hardcoded-text.actions';
 
 import { buildGetAction } from './base-api.actions';
 
@@ -6,7 +6,7 @@ jest.mock('./base-api.actions', () => ({ buildGetAction: jest.fn() }));
 
 test('calls the base get function with the correct params', () => {
   expect(buildGetAction).toHaveBeenCalledWith({
-    getUrl: "https://api.thecatapi.com/v1/images/search?size=full",
-    responseConstant: "CAT_RECEIVED"
+    getUrl: "http://localhost:7555/hardcoded-text",
+    responseConstant: "HARDCODED_TEXT_RECEIVED"
   })
 });

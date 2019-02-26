@@ -1,14 +1,14 @@
 import { fromJS } from 'immutable';
 
 import cat from './cat';
-import { RECEIVE_CAT } from '../actions/get-cat';
+import { CAT_RECEIVED } from '../actions/get-cat';
 
 test('cat reducer without state uses default', () => {
   expect(cat(undefined, { type: 'STUBBED' })).toMatchSnapshot();
 });
 
-test('RECEIVE_CAT', () => {
+test('CAT_RECEIVED', () => {
   const state = fromJS({ imageSrc: 'foo' });
-  const action = { type: RECEIVE_CAT, payload: [{ url: 'bar' }] };
+  const action = { type: CAT_RECEIVED, data: [{ url: 'bar' }] };
   expect(cat(state, action)).toMatchSnapshot();
 });

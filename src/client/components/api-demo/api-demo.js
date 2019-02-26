@@ -3,7 +3,7 @@ import immutableToJS from 'with-immutable-props-to-js';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { getHardcodedTextAction } from '../../actions/get-hardcoded-text';
+import { getHardcodedTextAction } from '../../actions/get-hardcoded-text.actions';
 import './api-demo.scss';
 
 class ApiDemo extends React.Component {

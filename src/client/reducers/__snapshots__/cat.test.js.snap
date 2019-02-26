@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RECEIVE_CAT 1`] = `
+exports[`CAT_RECEIVED 1`] = `
 Immutable.Map {
   "imageSrc": "bar",
 }

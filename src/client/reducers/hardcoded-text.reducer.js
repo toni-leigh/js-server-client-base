@@ -1,4 +1,4 @@
-import { HARDCODED_TEXT_RECEIVED } from '../actions/get-hardcoded-text';
+import { HARDCODED_TEXT_RECEIVED } from '../actions/get-hardcoded-text.actions';
 
 const hardcodedText = (state = '', action) => {
   switch (action.type) {
