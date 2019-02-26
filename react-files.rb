@@ -1,10 +1,9 @@
 def app_prefix
-  "waypoint"
+  "server-client"
 end
 
 def base_path
-  # "/home/developer/dev/s1_gac_ui/src/components"
-  '/Users/dev/Work/Dev/map-routes/src/components'
+  '/Users/dev/Work/Dev/js-bases/js-server-client-base/src/client/components'
 end
 
 def render_sass?
@@ -216,7 +215,7 @@ end
 
 # component-name: 'condensed', 'function', 'hoc' or 'class'
 {
-  'icon' => 'function'
+  'api-demo' => 'class'
 }.map do |f, type|
   Dir.mkdir("#{base_path}/#{f}")
 

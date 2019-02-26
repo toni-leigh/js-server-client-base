@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './client/reducers/reducers';
 
 import { CatWrapperConnected } from './client/components/cat-wrapper';
+import { ApiDemoConnected } from './client/components/api-demo';
 
 const store = createStore(
   rootReducer,
@@ -20,7 +21,12 @@ const store = createStore(
 class App extends Component {
   render() {
     return (
-      <Provider store={ store }><CatWrapperConnected /></Provider>
+      <Provider store={ store }>
+        <div>
+          <ApiDemoConnected />
+          <CatWrapperConnected />
+        </div>
+      </Provider>
     );
   }
 }

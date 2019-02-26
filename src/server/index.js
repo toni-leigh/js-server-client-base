@@ -8,8 +8,6 @@ app.use(bodyParser.json())
 
 const getHardcodedText = require('./hardcoded-text/get')
 
-console.log(getHardcodedText)
-
 app.get('/hardcoded-text', getHardcodedText)
 
 // app.post('/createUser', (req, res) => {
