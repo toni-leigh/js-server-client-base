@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HARDCODED_TEXT_RECEIVED 1`] = `"Test Hardcoded Text"`;
+
+exports[`hardcodedText reducer without state uses default 1`] = `""`;
