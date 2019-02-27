@@ -21,7 +21,7 @@ def react(key, type)
   i18n_component_import = render_translations? ? "import I18n from 'i18n-js';\n" : ""
   i18n_scope_import = render_translations? ? "const i18nOptions = { scope: '#{app_prefix}#{classified}' };\n\n" : ""
 
-  sass_import = render_sass? ? "import './#{key}.scss';\n\n" : "";
+  sass_import = render_sass? ? "import './#{key}.scss';\n\n" : ""
 
   if (type == 'class')
     return  "#{i18n_component_import}"\
@@ -40,7 +40,7 @@ def react(key, type)
     "    );\n"\
     "  }\n"\
     "}\n\n"\
-    "export default #{classified};"
+    "export default #{classified};\n"
   end
 
   if (type == 'hoc')
@@ -60,13 +60,13 @@ def react(key, type)
     "#{classified}.propTypes = {};\n\n"\
     "const mapDispatchToProps = {};\n\n"\
     "const mapStateToProps = (state) => state;\n\n"\
-    "const #{classified}Connected = connect(mapStateToProps, mapDispatchToProps)(immutableToJS(#{classified}));\n\n"
-    "export {\n";
-    "  #{classified},\n";
-    "  #{classified}Connected,\n";
-    "  mapDispatchToProps,\n";
-    "  mapStateToProps\n";
-    "};\n";
+    "const #{classified}Connected = connect(mapStateToProps, mapDispatchToProps)(immutableToJS(#{classified}));\n\n"\
+    "export {\n"\
+    "  #{classified},\n"\
+    "  #{classified}Connected,\n"\
+    "  mapDispatchToProps,\n"\
+    "  mapStateToProps\n"\
+    "};\n"
   end
 
   if (type == 'function')
@@ -127,20 +127,20 @@ def spec(key, type)
   classified = key.to_s.split('-').collect(&:capitalize).join
   variablised = classified[0, 1].downcase + classified[1..-1]
 
-  i18n_import = render_translations? ? "import './i18n';\n\n" : "";
+  i18n_import = render_translations? ? "import './i18n';\n\n" : ""
 
   if (type == 'hoc')
     return "import React from 'react';\n"\
-    "import { shallow } from 'enzyme';\n"\
+    "import { createStore } from 'redux';\n"\
+    "import { fromJS } from 'immutable';\n"\
+    "import { shallow } from 'enzyme';\n\n"\
     "import {\n"\
-    "  #{classified},\n";
-    "  #{classified}Connected,\n";
-    "  mapDispatchToProps,\n";
-    "  mapStateToProps\n";
-    "} from './#{key}';\n"\
-    "import { createStore } from 'redux';\n\n "\
-    "#{i18n_import}"\
-
+    "  #{classified},\n"\
+    "  #{classified}Connected,\n"\
+    "  mapDispatchToProps,\n"\
+    "  mapStateToProps\n"\
+    "} from './#{key}';\n\n"\
+    "#{i18n_import}\n\n"\
     "describe('<#{classified} />', () => {\n"\
     "  let #{variablised};\n\n"\
     "  beforeAll(() => {\n"\
@@ -151,8 +151,7 @@ def spec(key, type)
     "  test('basic dumb component render', () => {\n"\
     "    expect(#{variablised}).toMatchSnapshot();\n"\
     "  });\n"\
-    "});"
-
+    "});\n\n\n\n"\
     "describe('<#{classified}Connected />', () => {\n"\
     "  let #{variablised}Connected;\n\n"\
     "  beforeAll(() => {\n"\
@@ -164,14 +163,12 @@ def spec(key, type)
     "  test('render occurs through connection', () => {\n"\
     "    expect(#{variablised}Connected).toMatchSnapshot();\n"\
     "  });\n"\
-    "});"
-
+    "});\n\n\n\n"\
     "describe('mapDispatchToProps', () => {\n"\
     "  test('processes the actions correctly', () => {\n"\
     "    expect(mapDispatchToProps).toMatchSnapshot();\n"\
     "  });\n"\
-    "});\n"\
-
+    "});\n\n\n\n"\
     "describe('mapStateToProps', () => {\n"\
     "  test('processes the state correctly', () => {\n"\
     "  const state = fromJS({});\n"\
@@ -215,7 +212,7 @@ end
 
 # component-name: 'condensed', 'function', 'hoc' or 'class'
 {
-  'api-demo' => 'class'
+  'form-demo' => 'hoc'
 }.map do |f, type|
   Dir.mkdir("#{base_path}/#{f}")
 
