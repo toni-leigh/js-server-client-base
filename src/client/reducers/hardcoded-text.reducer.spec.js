@@ -9,6 +9,6 @@ test('hardcodedText reducer without state uses default', () => {
 
 test('HARDCODED_TEXT_RECEIVED', () => {
   const state = fromJS('');
-  const action = { type: HARDCODED_TEXT_RECEIVED, data: { hardcodedText: 'Test Hardcoded Text' } };
+  const action = { type: HARDCODED_TEXT_RECEIVED, data: 'Test Hardcoded Text' };
   expect(hardcodedTextReducer(state, action)).toMatchSnapshot();
 });
