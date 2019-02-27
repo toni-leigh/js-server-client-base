@@ -1,0 +1,12 @@
+# Endpoint Basics
+
+* Get end-points need cross origin header set to allow communication from client to server
+
+* There needs to be a function set up with `res` and `req` in order to make it work, a simple return of value won't
+
+```
+module.exports = (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.json('Hard coded text');
+}
+```
