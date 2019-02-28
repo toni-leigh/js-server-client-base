@@ -2,6 +2,10 @@
 
 * Set up with React Create App, Express, Redux, Immutable, SQL DB and Redis.
 
+* Run `npm start` in `/` to load the site at `localthost:3000`.
+* Run `node .` in `/server/` to get the backup up.
+* Run `npm test` in `/` to run the tests (and watch).
+
 ========
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
