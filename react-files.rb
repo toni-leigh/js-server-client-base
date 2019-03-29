@@ -237,7 +237,7 @@ end
   js_file.puts(react(f, type))
   js_file.close
 
-  if render_translations? && type != 'purejs'
+  if render_translations?
     i18n_file = File.new(i18n_path(f),'w')
     i18n_file.puts(i18n(f))
     i18n_file.close
