@@ -25,12 +25,7 @@ def react(key, type)
   sass_import = render_sass? ? "import './#{key}.scss';\n\n" : ""
 
   if type == 'purejs'
-    return  "#{i18n_component_import}"\
-    "import PropTypes from 'prop-types';\n"\
-    "import React from 'react';\n\n"\
-    "#{i18n_import}"\
-    "#{i18n_scope_import}"\
-    "const #{variablised} = () => {\n"\
+    return  "const #{variablised} = () => {\n"\
     "  return 1;\n"\
     "}\n\n"\
     "export default #{variablised};"
