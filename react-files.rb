@@ -16,12 +16,25 @@ end
 
 def react(key, type)
   classified = key.to_s.split('-').collect(&:capitalize).join
+  variablised = classified[0, 1].downcase + classified[1..-1]
 
   i18n_import = render_translations? ? "import './i18n';\n\n" : ""
   i18n_component_import = render_translations? ? "import I18n from 'i18n-js';\n" : ""
   i18n_scope_import = render_translations? ? "const i18nOptions = { scope: '#{app_prefix}#{classified}' };\n\n" : ""
 
   sass_import = render_sass? ? "import './#{key}.scss';\n\n" : ""
+
+  if type == 'purejs'
+    return  "#{i18n_component_import}"\
+    "import PropTypes from 'prop-types';\n"\
+    "import React from 'react';\n\n"\
+    "#{i18n_import}"\
+    "#{i18n_scope_import}"\
+    "const #{variablised} = () => {\n"\
+    "  return 1;\n"\
+    "}\n\n"\
+    "export default #{variablised};"
+  end
 
   if (type == 'class')
     return  "#{i18n_component_import}"\
@@ -128,6 +141,15 @@ def spec(key, type)
   variablised = classified[0, 1].downcase + classified[1..-1]
 
   i18n_import = render_translations? ? "import './i18n';\n\n" : ""
+  
+  if type == 'purejs'
+    return "import #{variablised} from './#{code_path}';\n\n"\
+    "describe('<#{variablised} />', () => {\n"\
+    "  test('basic call', () => {\n"\
+    "    expect(#{variablised}()).toEqual(1);\n"\
+    "  });\n"\
+    "});"
+  end
 
   if (type == 'hoc')
     return "import React from 'react';\n"\
@@ -210,7 +232,7 @@ def spec_path(key)
   "#{base_path}/#{key}/#{key}.test.js"
 end
 
-# component-name: 'condensed', 'function', 'hoc' or 'class'
+# component-name: 'purejs', 'condensed', 'function', 'hoc' or 'class'
 {
   'form-demo' => 'hoc'
 }.map do |f, type|
@@ -220,13 +242,13 @@ end
   js_file.puts(react(f, type))
   js_file.close
 
-  if render_translations?
+  if render_translations? && type != 'purejs'
     i18n_file = File.new(i18n_path(f),'w')
     i18n_file.puts(i18n(f))
     i18n_file.close
   end
 
-  if render_sass?
+  if render_sass? && type != 'purejs'
     sass_file = File.new(sass_path(f),'w')
     sass_file.puts(sass(f))
     sass_file.close
